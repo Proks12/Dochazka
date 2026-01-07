@@ -1,16 +1,14 @@
 package util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/dochazka_db";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        return DriverManager.getConnection(
+                Config.get("db.url"),
+                Config.get("db.user"),
+                Config.get("db.password")
+        );
     }
 }
